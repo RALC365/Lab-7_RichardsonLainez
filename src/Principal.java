@@ -26,6 +26,8 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     public Principal() {
         initComponents();
         id = 0;
+        
+        
     }
 
     /**
@@ -255,6 +257,11 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         jLabel3.setText("Cajero");
 
         jButton2.setText("Realizar Compra");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -336,11 +343,22 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         String nombre = tf_nombre_cajero.getText();
         cajeros.add(new Cajeros(nombre, id));
         id++;
-        JOptionPane.showMessageDialog(this, "El cajero se ha creado con exito");
+        //JOptionPane.showMessageDialog(this, "El cajero se ha creado con exito");
         tf_nombre_cajero.setText("");
+        
+        
+        
+//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).pack();
+//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).setLocationRelativeTo(null);
+//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).setVisible(true);
+        
+        jl_nombre_Cajero.setText(nombre);
         jd_prouctos.pack();
         jd_prouctos.setLocationRelativeTo(this);
         jd_prouctos.setVisible(true);
+        
+//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).getJl_nombre_Cajero().setText(nombre);
+        
         
         //cargar combobox
         DefaultComboBoxModel m_cajero =  new DefaultComboBoxModel();
@@ -398,6 +416,23 @@ ArrayList<Cajeros> cajeros = new ArrayList();
        
     }//GEN-LAST:event_jt_tablaMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int seg = ((Productos)cb_productos.getSelectedItem()).getTiempo();
+        int itemProductos = cb_productos.getSelectedIndex();
+        HiloTiempo hilo = new HiloTiempo(seg, jd_prouctos, productos, cajeros, clientes);
+        
+        hilo.start();
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -454,7 +489,7 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     private javax.swing.JButton jb_crear_cajero;
     private javax.swing.JButton jb_crear_productos;
     private javax.swing.JButton jb_ordenar;
-    private javax.swing.JDialog jd_prouctos;
+    public javax.swing.JDialog jd_prouctos;
     private javax.swing.JLabel jl_nombre_Cajero;
     private javax.swing.JLabel jl_nombre_cliente;
     private javax.swing.JTextField jt_orden;

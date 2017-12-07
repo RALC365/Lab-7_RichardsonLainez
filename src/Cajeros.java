@@ -1,5 +1,8 @@
 
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +23,7 @@ public class Cajeros {
     public Cajeros(String nombre, int id) {
         this.nombre = nombre;
         this.id = id;
+        
     }
 
     public String getNombre() {
@@ -45,6 +49,9 @@ public class Cajeros {
     public void setOrdenes(ArrayList<Ordenes> ordenes) {
         this.ordenes = ordenes;
     }
+    
+
+    
 
     @Override
     public String toString() {
