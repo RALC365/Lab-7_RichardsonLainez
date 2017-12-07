@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
 ArrayList<Cajeros> cajeros = new ArrayList();
     ArrayList<Productos> productos = new ArrayList();
+    ArrayList<Cliente> clientes = new ArrayList();
     int id;
 
     /**
@@ -35,12 +37,12 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     private void initComponents() {
 
         jd_prouctos = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jl_nombre_Cajero = new javax.swing.JLabel();
+        jl_nombre_cliente = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jt_orden = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jt_tabla = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -56,22 +58,24 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         jb_crear_productos = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jt_nombre_cliente = new javax.swing.JTextField();
+        tf_nombre_cliente = new javax.swing.JTextField();
         jb_ordenar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_productos = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_cajero = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
 
-        jLabel4.setText("Nombre de Cajero");
+        jl_nombre_Cajero.setText("Nombre de Cajero");
 
-        jLabel5.setText("Nombre de Cliente");
+        jl_nombre_cliente.setText("Nombre de Cliente");
 
         jLabel6.setText("Procesando");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jt_orden.setEditable(false);
+
+        jt_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -87,44 +91,42 @@ ArrayList<Cajeros> cajeros = new ArrayList();
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jt_tabla);
 
         javax.swing.GroupLayout jd_prouctosLayout = new javax.swing.GroupLayout(jd_prouctos.getContentPane());
         jd_prouctos.getContentPane().setLayout(jd_prouctosLayout);
         jd_prouctosLayout.setHorizontalGroup(
             jd_prouctosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_prouctosLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(156, 156, 156))
-            .addGroup(jd_prouctosLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(jd_prouctosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_prouctosLayout.createSequentialGroup()
-                        .addGap(197, 197, 197)
+                        .addGap(22, 22, 22)
+                        .addComponent(jl_nombre_Cajero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jl_nombre_cliente)
+                        .addGap(17, 17, 17))
+                    .addGroup(jd_prouctosLayout.createSequentialGroup()
+                        .addGap(116, 116, 116)
                         .addComponent(jLabel6)
                         .addGap(54, 54, 54)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_prouctosLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                        .addComponent(jt_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
         jd_prouctosLayout.setVerticalGroup(
             jd_prouctosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_prouctosLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(jd_prouctosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_nombre_Cajero)
                     .addGroup(jd_prouctosLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel4))
-                    .addGroup(jd_prouctosLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel5)))
+                        .addGap(8, 8, 8)
+                        .addComponent(jl_nombre_cliente)))
                 .addGap(26, 26, 26)
                 .addGroup(jd_prouctosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_orden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -237,10 +239,20 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         jLabel1.setText("Nombre Cliente");
 
         jb_ordenar.setText("Ordenar");
+        jb_ordenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_ordenarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Productos");
 
         jButton1.setText("Agregar a Orden");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Cajero");
 
@@ -256,13 +268,13 @@ ArrayList<Cajeros> cajeros = new ArrayList();
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(39, 39, 39)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
                         .addComponent(jButton1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(121, 121, 121)
-                        .addComponent(jt_nombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tf_nombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -272,7 +284,7 @@ ArrayList<Cajeros> cajeros = new ArrayList();
                         .addGap(78, 78, 78)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -285,15 +297,15 @@ ArrayList<Cajeros> cajeros = new ArrayList();
                 .addGap(80, 80, 80)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jt_nombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_ordenar))
                 .addGap(73, 73, 73)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(87, 87, 87))
@@ -328,7 +340,16 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         id++;
         JOptionPane.showMessageDialog(this, "El cajero se ha creado con exito");
         tf_nombre_cajero.setText("");
+        jd_prouctos.pack();
+        jd_prouctos.setLocationRelativeTo(this);
+        jd_prouctos.setVisible(true);
         
+        //cargar combobox
+        DefaultComboBoxModel m_cajero =  new DefaultComboBoxModel();
+        for (Cajeros t : cajeros) {
+            m_cajero.addElement(t);
+        }
+        cb_cajero.setModel(m_cajero);
     }//GEN-LAST:event_jb_crear_cajeroActionPerformed
 
     private void jb_crear_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crear_productosActionPerformed
@@ -343,7 +364,31 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         sp_precio.setValue(0);
         sp_tiempo.setValue(0);
         JOptionPane.showMessageDialog(this, "El producto se ha creado con éxito");
+        
+        
+        //cargar combobox
+        DefaultComboBoxModel m_producto = new DefaultComboBoxModel();
+        for (Productos t : productos) {
+            m_producto.addElement(t);
+        }
+        cb_productos.setModel(m_producto);
     }//GEN-LAST:event_jb_crear_productosActionPerformed
+
+    private void jb_ordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ordenarActionPerformed
+        // TODO add your handling code here:
+        String nombre_cliente = tf_nombre_cliente.getText();
+        jl_nombre_cliente.setText(nombre_cliente);
+        clientes.add(new Cliente(nombre_cliente));
+        
+    }//GEN-LAST:event_jb_ordenarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jl_nombre_Cajero.setText(((Cajeros) cb_cajero.getSelectedItem()).getNombre());//CAMBIAR NOMBre
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,16 +426,14 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_cajero;
+    private javax.swing.JComboBox<String> cb_productos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -400,16 +443,18 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jb_crear_cajero;
     private javax.swing.JButton jb_crear_productos;
     private javax.swing.JButton jb_ordenar;
     private javax.swing.JDialog jd_prouctos;
-    private javax.swing.JTextField jt_nombre_cliente;
+    private javax.swing.JLabel jl_nombre_Cajero;
+    private javax.swing.JLabel jl_nombre_cliente;
+    private javax.swing.JTextField jt_orden;
+    private javax.swing.JTable jt_tabla;
     private javax.swing.JSpinner sp_precio;
     private javax.swing.JSpinner sp_tiempo;
     private javax.swing.JTextField tf_nombre_cajero;
+    private javax.swing.JTextField tf_nombre_cliente;
     private javax.swing.JTextField tf_nombre_producto;
     // End of variables declaration//GEN-END:variables
 }

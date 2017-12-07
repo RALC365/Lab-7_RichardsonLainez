@@ -8,7 +8,6 @@
  *
  * @author RALC
  */
-public class Ordenes {
-    private Cajeros cajero;
+public class HiloTiempo {
     
 }

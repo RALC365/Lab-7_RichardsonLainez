@@ -48,7 +48,7 @@ public class Cajeros {
 
     @Override
     public String toString() {
-        return "Cajeros{" + "nombre=" + nombre + ", id=" + id + ", ordenes=" + ordenes + '}';
+        return nombre;
     }
    
    
