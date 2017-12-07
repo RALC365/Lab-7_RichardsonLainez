@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JDialog;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,55 +19,57 @@ public class HiloTiempo extends Thread {
 
     JDialog ventana;
     int segundos;
-    ArrayList<Productos> productos = new ArrayList();
-    ArrayList<Cajeros> cajeros = new ArrayList();
+//    ArrayList<Productos> productos = new ArrayList();
+//    ArrayList<Cajeros> cajeros = new ArrayList();
     ArrayList clientes = new ArrayList();
     boolean avanzar;
-    int itemProductos;
-    int itemCajeros;
-    int itemCliente;
+    DefaultTableModel dtm;
+    Cliente cliente;
+    Productos productos;
+    Cajeros cajero;
 
-    public HiloTiempo(int segundos,JDialog ventana, ArrayList<Productos> productos, ArrayList<Cajeros> cajeros, ArrayList clientes) {
-        this.avanzar = true;
-        this.segundos = segundos;
+    public HiloTiempo(JDialog ventana, int segundos, boolean avanzar, DefaultTableModel dtm, Cliente cliente, Productos productos, Cajeros cajero) {
         this.ventana = ventana;
+        this.segundos = segundos;
+        this.avanzar = avanzar;
+        this.dtm = dtm;
+        this.cliente = cliente;
         this.productos = productos;
-        this.cajeros = cajeros;
-        this.clientes = clientes;
+        this.cajero = cajero;
     }
     
-    public HiloTiempo(int segundos, int itemProductos, int itemCajeros,JDialog ventana, ArrayList<Productos> productos, ArrayList<Cajeros> cajeros, ArrayList clientes) {
-        this.avanzar = true;
-        this.segundos = segundos;
-        this.ventana = ventana;
-        this.productos = productos;
-        this.cajeros = cajeros;
-        this.clientes = clientes;
-        this.itemCajeros = itemCajeros;
-        this.itemProductos = this.itemCajeros;
-    }
+    
+   
+    
+    
 
     @Override
     public void run() {
+//        int i = 0;
+        
         int seg = 0;
         while (true) {
             if (avanzar) {
-            seg++;
-            System.out.println(seg);
-            try {
-                Thread.sleep(999);
-            } catch (InterruptedException ex) {
+                seg++;
+                System.out.println(seg);
+                try {
+                    Thread.sleep(999);
+                } catch (InterruptedException ex) {
 
+                }
+//                if (i == 0) {
+//                    String[] columnNames = {"Producto", "Cliente", "Apto",};
+//                    Object[][] datos = null;
+//                    dtm= new DefaultTableModel(datos,columnNames);
+//                    i=1;
+//                }
             }
             if (seg == segundos) {
-                avanzar= false;
+                avanzar = false;
                 seg = 0;
-                
-                
-                
-                
+                Object[] newRow={this.productos, this.cliente, segundos};
+                dtm.addRow(newRow);
             }
-        }
         }
 
     }
@@ -84,18 +87,9 @@ public class HiloTiempo extends Thread {
         this.segundos = segundos;
     }
 
-    public void setProductos(ArrayList<Productos> productos) {
-        this.productos = productos;
-    }
-
-    public void setCajeros(ArrayList<Cajeros> cajeros) {
-        this.cajeros = cajeros;
-    }
 
     public void setClientes(ArrayList clientes) {
         this.clientes = clientes;
     }
-    
-    
 
 }

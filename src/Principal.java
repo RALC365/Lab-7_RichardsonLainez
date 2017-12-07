@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,7 +19,13 @@ public class Principal extends javax.swing.JFrame {
 ArrayList<Cajeros> cajeros = new ArrayList();
     ArrayList<Productos> productos = new ArrayList();
     ArrayList<Cliente> clientes = new ArrayList();
+    ArrayList<HiloTiempo>hilos = new ArrayList();
+    int s_cajero;
+    int s_productos;
     int id;
+    Cliente cliente;
+    Productos productos1;
+    Cajeros cajero;
 
     /**
      * Creates new form Principal
@@ -341,21 +348,21 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     private void jb_crear_cajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crear_cajeroActionPerformed
         // TODO add your handling code here:
         String nombre = tf_nombre_cajero.getText();
-        cajeros.add(new Cajeros(nombre, id));
+        cajeros.add(new Cajeros(nombre, id, new JDialog(jd_prouctos)));
         id++;
         //JOptionPane.showMessageDialog(this, "El cajero se ha creado con exito");
         tf_nombre_cajero.setText("");
         
         
         
-//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).pack();
-//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).setLocationRelativeTo(null);
-//        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).setVisible(true);
-        
-        jl_nombre_Cajero.setText(nombre);
-        jd_prouctos.pack();
-        jd_prouctos.setLocationRelativeTo(this);
-        jd_prouctos.setVisible(true);
+        ((JDialog)cajeros.get(cajeros.size()-1).getVentana()).pack();
+        ((JDialog)cajeros.get(cajeros.size()-1).getVentana()).setLocationRelativeTo(null);
+        ((JDialog)cajeros.get(cajeros.size()-1).getVentana()).setVisible(true);
+       
+//        jl_nombre_Cajero.setText(nombre);
+//        jd_prouctos.pack();
+//        jd_prouctos.setLocationRelativeTo(this);
+//        jd_prouctos.setVisible(true);
         
 //        ((Ventana)cajeros.get(cajeros.size()-1).getVentana()).getJl_nombre_Cajero().setText(nombre);
         
@@ -403,7 +410,8 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         jl_nombre_Cajero.setText(((Cajeros) cb_cajero.getSelectedItem()).getNombre());//CAMBIAR NOMBre
          // DefaultTableModel m_tabla = (DefaultTableModel) jt_tabla.getModel();
          
-        int seleccionados = cb_productos.getSelectedIndex();//el que seleccioao
+        this.s_productos = cb_productos.getSelectedIndex();//el que seleccioao
+        this.s_cajero = cb_cajero.getSelectedIndex();
         
         
         
@@ -420,10 +428,19 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         // TODO add your handling code here:
         int seg = ((Productos)cb_productos.getSelectedItem()).getTiempo();
         int itemProductos = cb_productos.getSelectedIndex();
-        HiloTiempo hilo = new HiloTiempo(seg, jd_prouctos, productos, cajeros, clientes);
+       Productos p = (Productos)cb_productos.getSelectedItem();
+       Cajeros c = (Cajeros) cb_cajero.getSelectedItem();
+       int ce =  cb_cajero.getSelectedIndex();
+       Cliente cc = clientes.get(clientes.size()-1);
+       DefaultTableModel dtm = (DefaultTableModel)jt_tabla.getModel();
+        hilos.add(new HiloTiempo((JDialog) c.getVentana(), seg, true, dtm, cc, p, c));
         
-        hilo.start();
+        hilos.get(hilos.size()-1).start();
         
+       
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel)cb_productos.getModel();
+        modelo1.removeElementAt(ce);
+        cb_productos.setModel(modelo1);
         
         
         
@@ -433,6 +450,11 @@ ArrayList<Cajeros> cajeros = new ArrayList();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -493,7 +515,7 @@ ArrayList<Cajeros> cajeros = new ArrayList();
     private javax.swing.JLabel jl_nombre_Cajero;
     private javax.swing.JLabel jl_nombre_cliente;
     private javax.swing.JTextField jt_orden;
-    private javax.swing.JTable jt_tabla;
+    public javax.swing.JTable jt_tabla;
     private javax.swing.JSpinner sp_precio;
     private javax.swing.JSpinner sp_tiempo;
     private javax.swing.JTextField tf_nombre_cajero;

@@ -17,13 +17,14 @@ import javax.swing.JFrame;
 public class Cajeros {
     private String nombre;
     private int id;
+    private JDialog ventana;
     
    ArrayList<Ordenes> ordenes = new ArrayList();
 
-    public Cajeros(String nombre, int id) {
+    public Cajeros(String nombre, int id, JDialog ventana) {
         this.nombre = nombre;
         this.id = id;
-        
+        this.ventana = ventana;
     }
 
     public String getNombre() {
@@ -48,6 +49,14 @@ public class Cajeros {
 
     public void setOrdenes(ArrayList<Ordenes> ordenes) {
         this.ordenes = ordenes;
+    }
+
+    public JDialog getVentana() {
+        return ventana;
+    }
+
+    public void setVentana(JDialog ventana) {
+        this.ventana = ventana;
     }
     
 
