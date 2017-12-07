@@ -144,8 +144,8 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Creaci&#xf3; de Cajeros">
-                <Property name="tabTitle" type="java.lang.String" value="Creaci&#xf3; de Cajeros"/>
+              <JTabbedPaneConstraints tabName="Creaci&#xf3;n de Cajeros">
+                <Property name="tabTitle" type="java.lang.String" value="Creaci&#xf3;n de Cajeros"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -155,7 +155,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
@@ -163,7 +163,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
-                              <Component id="jb_crear_cajero" min="-2" max="-2" attributes="0"/>
+                              <Component id="jb_crear_cajero" min="-2" pref="132" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="234" max="32767" attributes="0"/>
@@ -178,8 +178,8 @@
                           <Component id="tf_nombre_cajero" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                      <Component id="jb_crear_cajero" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="jb_crear_cajero" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace pref="235" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -197,6 +197,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear Cajeros"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_crear_cajeroActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -302,6 +305,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear Producto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_crear_productosActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

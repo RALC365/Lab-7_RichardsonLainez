@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +13,16 @@
  * @author RALC
  */
 public class Principal extends javax.swing.JFrame {
+ArrayList<Cajeros> cajeros = new ArrayList();
+    ArrayList<Productos> productos = new ArrayList();
+    int id;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        id = 0;
     }
 
     /**
@@ -127,6 +135,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setText("Nombre");
 
         jb_crear_cajero.setText("Crear Cajeros");
+        jb_crear_cajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crear_cajeroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,7 +154,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(tf_nombre_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(252, 252, 252)
-                        .addComponent(jb_crear_cajero)))
+                        .addComponent(jb_crear_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(234, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,12 +164,12 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tf_nombre_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(163, 163, 163)
-                .addComponent(jb_crear_cajero)
+                .addGap(150, 150, 150)
+                .addComponent(jb_crear_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Creació de Cajeros", jPanel1);
+        jTabbedPane1.addTab("Creación de Cajeros", jPanel1);
 
         jLabel8.setText("Nombre");
 
@@ -169,6 +182,11 @@ public class Principal extends javax.swing.JFrame {
         sp_precio.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 5.0d));
 
         jb_crear_productos.setText("Crear Producto");
+        jb_crear_productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crear_productosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -302,6 +320,30 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_crear_cajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crear_cajeroActionPerformed
+        // TODO add your handling code here:
+        String nombre = tf_nombre_cajero.getText();
+        cajeros.add(new Cajeros(nombre, id));
+        id++;
+        JOptionPane.showMessageDialog(this, "El cajero se ha creado con exito");
+        tf_nombre_cajero.setText("");
+        
+    }//GEN-LAST:event_jb_crear_cajeroActionPerformed
+
+    private void jb_crear_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crear_productosActionPerformed
+        // TODO add your handling code here:
+        //crear productos
+        String nombre = tf_nombre_producto.getText();
+        double precio = Double.parseDouble(sp_precio.getValue()+"");
+        int tiempo = Integer.parseInt(sp_tiempo.getValue()+"");
+        productos.add(new Productos(nombre, precio, tiempo));
+        //limpiar controles
+        tf_nombre_producto.setText("");
+        sp_precio.setValue(0);
+        sp_tiempo.setValue(0);
+        JOptionPane.showMessageDialog(this, "El producto se ha creado con éxito");
+    }//GEN-LAST:event_jb_crear_productosActionPerformed
 
     /**
      * @param args the command line arguments
